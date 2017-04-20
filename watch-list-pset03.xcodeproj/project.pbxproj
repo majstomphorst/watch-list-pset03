@@ -12,6 +12,7 @@
 		28B923091EA62F7900CC0320 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B923071EA62F7900CC0320 /* Main.storyboard */; };
 		28B9230B1EA62F7900CC0320 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B9230A1EA62F7900CC0320 /* Assets.xcassets */; };
 		28B9230E1EA62F7900CC0320 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B9230C1EA62F7900CC0320 /* LaunchScreen.storyboard */; };
+		28E8FC9D1EA8A60A0062D46C /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E8FC9C1EA8A60A0062D46C /* MovieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		28B9230A1EA62F7900CC0320 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28B9230D1EA62F7900CC0320 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28B9230F1EA62F7A00CC0320 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28E8FC9C1EA8A60A0062D46C /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				28B923031EA62F7900CC0320 /* AppDelegate.swift */,
 				28B923051EA62F7900CC0320 /* ViewController.swift */,
 				28B923071EA62F7900CC0320 /* Main.storyboard */,
+				28E8FC9C1EA8A60A0062D46C /* MovieCell.swift */,
 				28B9230A1EA62F7900CC0320 /* Assets.xcassets */,
 				28B9230C1EA62F7900CC0320 /* LaunchScreen.storyboard */,
 				28B9230F1EA62F7A00CC0320 /* Info.plist */,
@@ -139,6 +142,7 @@
 			files = (
 				28B923061EA62F7900CC0320 /* ViewController.swift in Sources */,
 				28B923041EA62F7900CC0320 /* AppDelegate.swift in Sources */,
+				28E8FC9D1EA8A60A0062D46C /* MovieCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +308,7 @@
 				28B923141EA62F7A00CC0320 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

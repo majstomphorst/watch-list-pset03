@@ -8,10 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
     
-    // GitHub Push testje
+    let mtitle = ["movie01", "movie02", "movie03"]
+    
+    let desc = [
+        "movie01": "MOVIE01",
+        "movie02": "MOVIE02",
+        "movie03": "MOVIE03"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,7 +29,24 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return mtitle.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        as! MovieCell
+        
+        cell.movieTitle.text = mtitle[indexPath.row]
+        
+        if let tmp = desc[mtitle[indexPath.row]] {
+            cell.movieDescription.text = tmp
+        }
+        
+        return cell
+    }
 
 }
 
