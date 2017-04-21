@@ -9,6 +9,26 @@
 import UIKit
 
 class MovieCell: UITableViewCell {
+    
+    var imageUrl: URL? {
+        didSet {
+            let task = URLSession.shared.dataTask(with: imageUrl!) { (data, response, error) in
+                if error != nil {
+                    print("getting img faild error")
+                }
+                else {
+                    if let data = data {
+                        let image = UIImage(data: data)
+                        
+                        DispatchQueue.main.async {
+                            self.movieImg.image = image
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
 
     @IBOutlet weak var movieImg: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
