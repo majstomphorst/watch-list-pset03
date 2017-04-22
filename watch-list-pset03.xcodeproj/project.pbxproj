@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		289AB2F31EAA2B0000EA569E /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289AB2F21EAA2B0000EA569E /* MovieInfoViewController.swift */; };
 		28B923041EA62F7900CC0320 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B923031EA62F7900CC0320 /* AppDelegate.swift */; };
 		28B923061EA62F7900CC0320 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B923051EA62F7900CC0320 /* ViewController.swift */; };
 		28B923091EA62F7900CC0320 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B923071EA62F7900CC0320 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		289AB2F21EAA2B0000EA569E /* MovieInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
 		28B923001EA62F7900CC0320 /* watch-list-pset03.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "watch-list-pset03.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B923031EA62F7900CC0320 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28B923051EA62F7900CC0320 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				28B923031EA62F7900CC0320 /* AppDelegate.swift */,
 				28B923051EA62F7900CC0320 /* ViewController.swift */,
+				289AB2F21EAA2B0000EA569E /* MovieInfoViewController.swift */,
 				28E8FC9C1EA8A60A0062D46C /* MovieCell.swift */,
 				28B923071EA62F7900CC0320 /* Main.storyboard */,
 				28B9230C1EA62F7900CC0320 /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 				28B923061EA62F7900CC0320 /* ViewController.swift in Sources */,
 				28B923041EA62F7900CC0320 /* AppDelegate.swift in Sources */,
 				28E8FC9D1EA8A60A0062D46C /* MovieCell.swift in Sources */,
+				289AB2F31EAA2B0000EA569E /* MovieInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
