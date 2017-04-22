@@ -161,6 +161,7 @@
                     <connections>
                         <outlet property="MovieName" destination="Jr8-PB-Agg" id="AcX-ZA-nKi"/>
                         <outlet property="movieImg" destination="3eq-dv-zua" id="F0P-y1-16x"/>
+                        <outlet property="movieYear" destination="ixh-9w-FcA" id="pnu-Lm-aGf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coO-h7-uBh" userLabel="First Responder" sceneMemberID="firstResponder"/>

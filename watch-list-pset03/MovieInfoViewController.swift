@@ -13,10 +13,12 @@ class MovieInfoViewController: UIViewController {
     
     @IBOutlet weak var MovieName: UILabel!
     @IBOutlet weak var movieImg: UIImageView!
+    @IBOutlet weak var movieYear: UILabel!
     
     var movieId: String?
     var url = URL(string: "")
     var movieInfo: [String : AnyObject] = [:]
+    var movieImgage = ""
     
     
     override func viewDidLoad() {
@@ -25,12 +27,7 @@ class MovieInfoViewController: UIViewController {
         if let movieId = movieId {
             url = URL(string: "https://www.omdbapi.com/?i=\(movieId)&plot=full")
         }
-        
-        MovieName.text = "testing"
-        
-        print("viewDidLoad")
    
-        
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
                 print("getting json faild more movie info")
@@ -43,9 +40,12 @@ class MovieInfoViewController: UIViewController {
                         
                         self.movieInfo = json
                         
-                        self.MovieName.text = json["Title"] as? String
-                        
                         DispatchQueue.main.async {
+                            // yay f*ck up the naming again
+                            self.MovieName.text = json["Title"] as? String
+                            self.movieYear.text = json["Year"] as? String
+                            self.movieImgage = (json["Poster"] as? String)!
+                            print(json["Poster"])
                         }
                         
                     }
@@ -56,6 +56,10 @@ class MovieInfoViewController: UIViewController {
             }
         }
         task.resume()
+        
+        // let LoadImg = URLSession.shared.dataTask(with: URL)
+        
+        
         // Do any additional setup after loading the view.
     }
 
