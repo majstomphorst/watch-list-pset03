@@ -10,13 +10,21 @@ import UIKit
 
 class MovieInfoViewController: UIViewController {
     
-    var test: String = ""
+    var test: String?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let test = test {
+            print(test)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("MovieInfoViewC")
-        print(test)
+        print(test!)
         // Do any additional setup after loading the view.
     }
 

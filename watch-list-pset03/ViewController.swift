@@ -76,17 +76,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print(type(of: send))
         
         // segue to the next controller
-        self.performSegue(withIdentifier: "movieInfoSegue", sender: "")
+        // self.performSegue(withIdentifier: "movieInfoSegue", sender: "")
     
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let movieInfoVC = segue.destination as? MovieInfoViewController {
-            movieInfoVC.test = send
+        if segue.identifier == "movieInfoSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destVC = segue.destination as! MovieInfoViewController
+                    destVC.test = items[indexPath.row]["Title"] as? String
+                
+            }
+                
         }
     }
-    
-    
     
     //MARK: actions
     // search bar
