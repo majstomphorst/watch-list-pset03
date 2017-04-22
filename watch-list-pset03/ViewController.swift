@@ -125,6 +125,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
         task.resume()
+        
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

@@ -18,7 +18,7 @@ class MovieInfoViewController: UIViewController {
     var movieId: String?
     var url = URL(string: "")
     var movieInfo: [String : AnyObject] = [:]
-    var movieImgage = ""
+    var movieImage = URL(string: "")
     
     
     override func viewDidLoad() {
@@ -44,8 +44,7 @@ class MovieInfoViewController: UIViewController {
                             // yay f*ck up the naming again
                             self.MovieName.text = json["Title"] as? String
                             self.movieYear.text = json["Year"] as? String
-                            self.movieImgage = (json["Poster"] as? String)!
-                            print(json["Poster"])
+                            self.movieImage = URL(string: json["Poster"] as! String)
                         }
                         
                     }
@@ -56,6 +55,9 @@ class MovieInfoViewController: UIViewController {
             }
         }
         task.resume()
+        
+        
+        
         
         // let LoadImg = URLSession.shared.dataTask(with: URL)
         
