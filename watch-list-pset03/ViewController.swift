@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
                 print("getting json faild error")
@@ -84,7 +85,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if segue.identifier == "movieInfoSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destVC = segue.destination as! MovieInfoViewController
-                    destVC.test = items[indexPath.row]["Title"] as? String
+                    destVC.movieId = items[indexPath.row]["imdbID"] as! String
                 
             }
                 

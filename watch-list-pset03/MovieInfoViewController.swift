@@ -10,21 +10,52 @@ import UIKit
 
 class MovieInfoViewController: UIViewController {
     
-    var test: String?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let test = test {
-            print(test)
-        }
-    }
+    @IBOutlet weak var MovieName: UILabel!
+    @IBOutlet weak var movieImg: UIImageView!
+    
+    var movieId: String?
+    var url = URL(string: "")
+    var movieInfo: [String : AnyObject] = [:]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("MovieInfoViewC")
-        print(test!)
+        if let movieId = movieId {
+            url = URL(string: "https://www.omdbapi.com/?i=\(movieId)&plot=full")
+        }
+        
+        MovieName.text = "testing"
+        
+        print("viewDidLoad")
+   
+        
+        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if error != nil {
+                print("getting json faild more movie info")
+            }
+            else {
+                if let data = data
+                {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String : AnyObject]
+                        
+                        self.movieInfo = json
+                        
+                        self.MovieName.text = json["Title"] as? String
+                        
+                        DispatchQueue.main.async {
+                        }
+                        
+                    }
+                    catch {
+                        print("erro")
+                    }
+                }
+            }
+        }
+        task.resume()
         // Do any additional setup after loading the view.
     }
 
