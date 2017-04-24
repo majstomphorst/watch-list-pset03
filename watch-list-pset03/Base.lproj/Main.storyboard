@@ -96,7 +96,15 @@
                             <constraint firstAttribute="trailing" secondItem="cwq-kV-Nmz" secondAttribute="trailing" id="y1D-8X-vgS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Main screen" id="f9e-k7-nGA"/>
+                    <navigationItem key="navigationItem" title="Main screen" id="f9e-k7-nGA">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="YZJ-9n-vv6">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AXr-2C-FOr" userLabel="Fav">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fav"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="search" destination="cwq-kV-Nmz" id="Wrx-MI-eJQ"/>
                         <outlet property="searchDisplayController" destination="a8b-uc-z1I" id="OCc-I7-oGQ"/>
@@ -146,18 +154,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcS-Mq-UDf">
+                                <rect key="frame" x="135" y="205" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="storeFavourite:" destination="bzc-Pb-T7I" eventType="touchUpInside" id="jou-oe-9mW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3eq-dv-zua" firstAttribute="top" secondItem="RIl-Ti-INw" secondAttribute="bottom" id="1vz-p1-QzF"/>
                             <constraint firstItem="3eq-dv-zua" firstAttribute="leading" secondItem="E7O-WQ-Uyc" secondAttribute="leadingMargin" id="8ml-Ui-zpe"/>
                             <constraint firstItem="ixh-9w-FcA" firstAttribute="top" secondItem="Jr8-PB-Agg" secondAttribute="bottom" constant="8" id="HNQ-fL-COT"/>
+                            <constraint firstItem="YcS-Mq-UDf" firstAttribute="top" secondItem="Jr8-PB-Agg" secondAttribute="bottom" constant="112" id="Jqx-ob-e5z"/>
                             <constraint firstItem="Jr8-PB-Agg" firstAttribute="leading" secondItem="3eq-dv-zua" secondAttribute="trailing" constant="8" id="JyG-l4-vTP"/>
+                            <constraint firstItem="YcS-Mq-UDf" firstAttribute="leading" secondItem="3eq-dv-zua" secondAttribute="trailing" constant="8" id="OuU-3N-BZv"/>
                             <constraint firstItem="ixh-9w-FcA" firstAttribute="leading" secondItem="3eq-dv-zua" secondAttribute="trailing" constant="8" id="wyK-E0-BUx"/>
                             <constraint firstItem="Jr8-PB-Agg" firstAttribute="top" secondItem="RIl-Ti-INw" secondAttribute="bottom" constant="8" id="xxJ-Z3-GuW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PtZ-tx-s8C"/>
+                    <navigationItem key="navigationItem" id="PtZ-tx-s8C">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="wUF-fD-SNb">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pGY-Jx-KgH" userLabel="Fav">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fav"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="MovieName" destination="Jr8-PB-Agg" id="AcX-ZA-nKi"/>
                         <outlet property="movieImg" destination="3eq-dv-zua" id="F0P-y1-16x"/>

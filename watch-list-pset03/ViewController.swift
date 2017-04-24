@@ -21,32 +21,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            if error != nil {
-                print("getting json faild error")
-            }
-            else {
-                if let data = data
-                {
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String : AnyObject]
-                        let items = json["Search"] as! [[String : AnyObject]]
-                        
-                        self.items = items
-                        
-                        // process json -> mtitle
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
-                    catch {
-                        print("error")
-                    }
-                }
-            }
+        if let userData = UserDefaults.standard.array(forKey: "1") {
+            print("User data:")
+            print(userData)
+        } else {
+            print("Creating userData:")
+            var userData = [[String : AnyObject]]()
+            
+            UserDefaults.standard.set(userData, forKey: "1")
+            // create empty user data? 
+            print(userData)
         }
-        task.resume()
- 
+        
+        // UserDefaults.standard.removeObject(forKey: "1")
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -69,13 +58,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("you selectd row#\(indexPath)")
         
         send = items[indexPath.row]["Title"] as! String
-        print(type(of: send))
-        
-        // segue to the next controller
-        // self.performSegue(withIdentifier: "movieInfoSegue", sender: "")
     
     }
 
@@ -136,3 +120,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 }
 
+
+
+//        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+//            if error != nil {
+//                print("getting json faild error")
+//            }
+//            else {
+//                if let data = data
+//                {
+//                    do {
+//                        let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String : AnyObject]
+//                        let items = json["Search"] as! [[String : AnyObject]]
+//
+//                        self.items = items
+//
+//                        // process json -> mtitle
+//                        DispatchQueue.main.async {
+//                            self.tableView.reloadData()
+//                        }
+//                    }
+//                    catch {
+//                        print("error")
+//                    }
+//                }
+//            }
+//        }
+//        task.resume()

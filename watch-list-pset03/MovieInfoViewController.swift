@@ -20,8 +20,11 @@ class MovieInfoViewController: UIViewController {
     var movieImage = URL(string: "")
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         if let movieId = movieId {
             url = URL(string: "https://www.omdbapi.com/?i=\(movieId)&plot=full")
@@ -84,8 +87,17 @@ class MovieInfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func storeFavourite(_ sender: UIButton) {
+        
+        if var userData = UserDefaults.standard.array(forKey: "1") {
+            userData.append(movieInfo)
+            UserDefaults.standard.set(userData, forKey: "1")   
+        }
+        // get user data and append
+    }
 
     /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
