@@ -102,6 +102,9 @@
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Fav"/>
+                                <connections>
+                                    <segue destination="ACG-46-ySS" kind="show" id="fjD-JQ-Cy8"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -123,7 +126,7 @@
             </objects>
             <point key="canvasLocation" x="841" y="124"/>
         </scene>
-        <!--Movie Info View Controller-->
+        <!--More info-->
         <scene sceneID="3mz-OG-OsE">
             <objects>
                 <viewController id="bzc-Pb-T7I" customClass="MovieInfoViewController" customModule="watch_list_pset03" customModuleProvider="target" sceneMemberID="viewController">
@@ -174,12 +177,15 @@
                             <constraint firstItem="Jr8-PB-Agg" firstAttribute="top" secondItem="RIl-Ti-INw" secondAttribute="bottom" constant="8" id="xxJ-Z3-GuW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PtZ-tx-s8C">
+                    <navigationItem key="navigationItem" title="More info" id="PtZ-tx-s8C">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="wUF-fD-SNb">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pGY-Jx-KgH" userLabel="Fav">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Fav"/>
+                                <connections>
+                                    <segue destination="ACG-46-ySS" kind="show" id="S0x-4P-S4f"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -190,8 +196,99 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coO-h7-uBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem title="More info" id="9eR-hY-qpx">
+                    <barButtonItem key="rightBarButtonItem" style="plain" id="E05-wi-Zh6">
+                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="D7x-Oy-PsW" userLabel="Fav">
+                            <rect key="frame" x="276" y="7" width="83" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Fav"/>
+                        </button>
+                    </barButtonItem>
+                </navigationItem>
             </objects>
             <point key="canvasLocation" x="1576.8" y="123.68815592203899"/>
+        </scene>
+        <!--Favourite movies-->
+        <scene sceneID="WLK-ov-dut">
+            <objects>
+                <viewController id="ACG-46-ySS" customClass="FavouritesViewController" customModule="watch_list_pset03" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vX3-A5-374"/>
+                        <viewControllerLayoutGuide type="bottom" id="37z-If-qc4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ggC-cQ-vz5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GLP-O8-E0a">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favCell" id="1bs-E8-Ik8" customClass="FavouritesTableViewCell" customModule="watch_list_pset03" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1bs-E8-Ik8" id="kWL-Zk-LKD">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D0S-M7-oL6">
+                                                    <rect key="frame" x="8" y="8" width="69" height="84"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="D0S-M7-oL6" secondAttribute="height" multiplier="23:28" id="zOS-vg-uJP"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpH-La-15p">
+                                                    <rect key="frame" x="85" y="8" width="78" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9e-3K-FND">
+                                                    <rect key="frame" x="85" y="37" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OpH-La-15p" firstAttribute="top" secondItem="kWL-Zk-LKD" secondAttribute="topMargin" id="3ON-zG-lWR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="D0S-M7-oL6" secondAttribute="bottom" id="Bhs-hc-NTE"/>
+                                                <constraint firstItem="D0S-M7-oL6" firstAttribute="top" secondItem="kWL-Zk-LKD" secondAttribute="topMargin" id="Rm0-xM-ByM"/>
+                                                <constraint firstItem="OpH-La-15p" firstAttribute="leading" secondItem="D0S-M7-oL6" secondAttribute="trailing" constant="8" id="cXH-l5-t9a"/>
+                                                <constraint firstItem="p9e-3K-FND" firstAttribute="top" secondItem="OpH-La-15p" secondAttribute="bottom" constant="8" id="iH7-g2-COr"/>
+                                                <constraint firstItem="D0S-M7-oL6" firstAttribute="leading" secondItem="kWL-Zk-LKD" secondAttribute="leadingMargin" id="k3K-et-A7k"/>
+                                                <constraint firstItem="p9e-3K-FND" firstAttribute="leading" secondItem="D0S-M7-oL6" secondAttribute="trailing" constant="8" id="pDV-NG-xo5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="movieImage" destination="D0S-M7-oL6" id="5nx-BO-2nx"/>
+                                            <outlet property="movieTitle" destination="OpH-La-15p" id="7Ht-DG-9bq"/>
+                                            <outlet property="movieYear" destination="p9e-3K-FND" id="sCP-wc-0OF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ACG-46-ySS" id="Uhm-6B-fwa"/>
+                                    <outlet property="delegate" destination="ACG-46-ySS" id="F3g-Rm-dtc"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="37z-If-qc4" firstAttribute="top" secondItem="GLP-O8-E0a" secondAttribute="bottom" id="RJg-AA-Pvl"/>
+                            <constraint firstItem="GLP-O8-E0a" firstAttribute="leading" secondItem="ggC-cQ-vz5" secondAttribute="leading" id="ZDt-wi-EuR"/>
+                            <constraint firstItem="GLP-O8-E0a" firstAttribute="top" secondItem="vX3-A5-374" secondAttribute="bottom" id="cUM-FS-JOE"/>
+                            <constraint firstAttribute="trailing" secondItem="GLP-O8-E0a" secondAttribute="trailing" id="rUf-h8-S1n"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favourite movies" id="WS8-7X-DlA"/>
+                    <connections>
+                        <outlet property="favTableView" destination="GLP-O8-E0a" id="F8R-st-6ef"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eyd-qn-EbP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2256.8000000000002" y="123.68815592203899"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iIQ-pZ-KXS">
@@ -212,4 +309,7 @@
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="S0x-4P-S4f"/>
+    </inferredMetricsTieBreakers>
 </document>

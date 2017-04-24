@@ -26,7 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             print(userData)
         } else {
             print("Creating userData:")
-            var userData = [[String : AnyObject]]()
+            let userData = [[String : AnyObject]]()
             
             UserDefaults.standard.set(userData, forKey: "1")
             // create empty user data? 
