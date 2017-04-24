@@ -12,18 +12,8 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
 
     @IBOutlet weak var favTableView: UITableView!
     
-    // var userData: [[String : AnyObject]] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if let userData = UserDefaults.standard.array(forKey: "1") {
-//            print("User data:")
-//            print(userData)
-//            print(userData.count)
-//        }
-        
-        
         // Do any additional setup after loading the view.
     }
 
@@ -36,9 +26,6 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if let userData = UserDefaults.standard.array(forKey: "1") {
-            print("User data:")
-            print(userData.count)
-            
             return userData.count
         }
         print("failed row")
@@ -50,18 +37,51 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "favCell" , for: indexPath) as! FavouritesTableViewCell
         
         if let userData = UserDefaults.standard.array(forKey: "1") {
-            print("User data:")
-            print(userData.count)
+            
             let dict = userData[indexPath.row] as! [String : AnyObject]
-            print(dict["Title"]!)
             
             cell.movieTitle.text = dict["Title"] as? String
             cell.movieYear.text = dict["Year"] as? String
+            
+            
+            // getting the img
+            let getPoster = URLSession.shared.dataTask(with: URL(string: dict["Poster"] as! String)!) { (data, response, error) in
+                if error != nil {
+                    print("poster error")
+                } else {
+                    if let data = data {
+                        let image = UIImage(data: data)
+                        
+                        DispatchQueue.main.async {
+                            cell.movieImage.image = image
+                        }
+                    }
+                }
+            }
+            getPoster.resume()
         }
     
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if var userData = UserDefaults.standard.array(forKey: "1") {
+        
+            userData.remove(at: indexPath.row)
+            
+            UserDefaults.standard.set(userData, forKey: "1")
+            
+            tableView.reloadData()
+        }
+        
+        
+        
+        
+        print(indexPath.row)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

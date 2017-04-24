@@ -33,8 +33,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             print(userData)
         }
         
-        // UserDefaults.standard.removeObject(forKey: "1")
-        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
