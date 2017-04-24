@@ -15,8 +15,7 @@ class MovieCell: UITableViewCell {
             let task = URLSession.shared.dataTask(with: imageUrl!) { (data, response, error) in
                 if error != nil {
                     print("getting img faild error")
-                }
-                else {
+                } else {
                     if let data = data {
                         let image = UIImage(data: data)
                         

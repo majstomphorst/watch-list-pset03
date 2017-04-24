@@ -10,7 +10,6 @@ import UIKit
 
 class MovieInfoViewController: UIViewController {
     
-    
     @IBOutlet weak var MovieName: UILabel!
     @IBOutlet weak var movieImg: UIImageView!
     @IBOutlet weak var movieYear: UILabel!
@@ -40,12 +39,29 @@ class MovieInfoViewController: UIViewController {
                         
                         self.movieInfo = json
                         
+                        // getting the img
+                        let getPoster = URLSession.shared.dataTask(with: URL(string: json["Poster"] as! String)!) { (data, response, error) in
+                            if error != nil {
+                                print("poster error")
+                            } else {
+                                if let data = data {
+                                    let image = UIImage(data: data)
+                                    
+                                    DispatchQueue.main.async {
+                                        self.movieImg.image = image
+                                    }
+                                }
+                            }
+                        }
+                        getPoster.resume()
+                        
+                        
                         DispatchQueue.main.async {
-                            // yay f*ck up the naming again
+                            // yay f*ck up the naming again.....
                             self.MovieName.text = json["Title"] as? String
                             self.movieYear.text = json["Year"] as? String
-                            self.movieImage = URL(string: json["Poster"] as! String)
                         }
+                        
                         
                     }
                     catch {
@@ -55,8 +71,6 @@ class MovieInfoViewController: UIViewController {
             }
         }
         task.resume()
-        
-        
         
         
         // let LoadImg = URLSession.shared.dataTask(with: URL)
