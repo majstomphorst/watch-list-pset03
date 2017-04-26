@@ -76,8 +76,8 @@ class MovieInfoViewController: UIViewController {
                             self.MovieName.text = json["Title"] as? String
                             self.movieYear.text = json["Year"] as? String
                             let ratings = self.movieInfo["Ratings"] as? [[String : AnyObject]]
+                            self.movieImdbRating.text = ratings![0]["Value"] as? String
                             self.movieTomatoRating.text = ratings![1]["Value"] as? String
-                            self.movieImdbRating.text = ratings![2]["Value"] as? String
                         }
                         
                         
