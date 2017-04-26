@@ -19,39 +19,49 @@ class MovieInfoViewController: UIViewController {
     var movieInfo: [String : AnyObject] = [:]
     var movieImage = URL(string: "")
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+        // if movieId received create URL
         if let movieId = movieId {
             url = URL(string: "https://www.omdbapi.com/?i=\(movieId)&plot=full")
         }
    
+        
+        // getting specific movie information
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
                 print("getting json faild more movie info")
             }
             else {
+                // if any data retrieved
                 if let data = data
                 {
                     do {
+                        // storing information and json
                         let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String : AnyObject]
                         
                         self.movieInfo = json
                         
                         // getting the img
                         let getPoster = URLSession.shared.dataTask(with: URL(string: json["Poster"] as! String)!) { (data, response, error) in
+                            
+                            // if poster retrieval failed
                             if error != nil {
-                                print("poster error")
-                            } else {
-                                if let data = data {
-                                    let image = UIImage(data: data)
-                                    
-                                    DispatchQueue.main.async {
+                                
+                                DispatchQueue.main.async {
+                                    // display "image not found"
+                                    if let filePath = Bundle.main.path(forResource: "noimagefound", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
                                         self.movieImg.image = image
+                                    }
+                                }
+                                
+    
+                            } else {
+                                // if data was retrieved
+                                if let data = data {
+                                    DispatchQueue.main.async {
+                                        self.movieImg.image = UIImage(data: data)
                                     }
                                 }
                             }
@@ -60,7 +70,7 @@ class MovieInfoViewController: UIViewController {
                         
                         
                         DispatchQueue.main.async {
-                            // yay f*ck up the naming again.....
+                            // sending data to view
                             self.MovieName.text = json["Title"] as? String
                             self.movieYear.text = json["Year"] as? String
                         }
@@ -68,7 +78,7 @@ class MovieInfoViewController: UIViewController {
                         
                     }
                     catch {
-                        print("erro")
+                        print("error")
                     }
                 }
             }
@@ -76,35 +86,19 @@ class MovieInfoViewController: UIViewController {
         task.resume()
         
         
-        // let LoadImg = URLSession.shared.dataTask(with: URL)
-        
-        
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
+    // if favourite button is presed
     @IBAction func storeFavourite(_ sender: UIButton) {
         
+        // getting user data and adding the movie info
+        // than putting it back overriding old data
         if var userData = UserDefaults.standard.array(forKey: "1") {
             userData.append(movieInfo)
             UserDefaults.standard.set(userData, forKey: "1")   
         }
-        // get user data and append
     }
 
-    /*
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

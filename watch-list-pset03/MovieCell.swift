@@ -20,16 +20,20 @@ class MovieCell: UITableViewCell {
             // start a task on a second thread, go to the imageUrl and extracts image data
             let task = URLSession.shared.dataTask(with: imageUrl!) { (data, response, error) in
                 if error != nil {
-                    print("getting img faild error")
+                    
+                    DispatchQueue.main.async {
+                        // if getting image failed display "image not found"
+                        if let filePath = Bundle.main.path(forResource: "noimagefound", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
+                            self.movieImg.image = image
+                        }
+                    }
                 } else {
                     if let data = data {
-                        // soring image data
-                        let image = UIImage(data: data)
-                        
+                       
                         // on the main thread
                         DispatchQueue.main.async {
                             // Assigning image data to Image placeholder
-                            self.movieImg.image = image
+                            self.movieImg.image = UIImage(data: data)
                         }
                     }
                 }
