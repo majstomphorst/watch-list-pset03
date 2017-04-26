@@ -13,89 +13,82 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var search: UISearchBar!
     
-    
-    let url = URL(string: "https://www.omdbapi.com/?s=avatar")
+    // creating variabels to store information
     var items: [[String : AnyObject]] = []
-    var send = ""
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let userData = UserDefaults.standard.array(forKey: "1") {
-            print("User data:")
-            print(userData)
+        // checking for user data if there is data do nothing if not create it
+        if UserDefaults.standard.array(forKey: "1") != nil {
         } else {
-            print("Creating userData:")
+            // create empty user data
             let userData = [[String : AnyObject]]()
-            
+            // storing empty user data
             UserDefaults.standard.set(userData, forKey: "1")
-            // create empty user data? 
-            print(userData)
         }
-        
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // returning a number of items to be displayed
         return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        // selecting a cell to be populated
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         as! MovieCell
-    
+
+        // Populating cell (tableview)
         cell.imageUrl = URL(string: items[indexPath.row]["Poster"] as! String)
         cell.movieTitle.text = items[indexPath.row]["Title"] as? String
         cell.movieDescription.text = items[indexPath.row]["Year"] as? String
         
+        // returning the cell to be Display
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        send = items[indexPath.row]["Title"] as! String
-    
-    }
 
+    // if a movie is selected (cell) store that information end send it to the MovieInfoVC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "movieInfoSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destVC = segue.destination as! MovieInfoViewController
                     destVC.movieId = (items[indexPath.row]["imdbID"] as! String)
-                
             }
-                
         }
     }
     
     //MARK: actions
+    
     // search bar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // getting user search term
         var search = self.search.text
-        print(search!)
         
+        // sanitising user input (serch term)
         search = search?.addingPercentEncoding(withAllowedCharacters: .alphanumerics)
         
+        // creating the url where the information is tobe extracted
         let url = URL(string: "https://www.omdbapi.com/?s=\(search!)")
         
+        // go to the url and get the data no a second thread (smooth UserExperince)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
                 print("getting json faild error")
-            }
-            else {
+            } else {
+                // if data exists
                 if let data = data
                 {
                     do {
+                        // interpreting data is json format
                         let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String : AnyObject]
                         
+                        // if json interpretation succeeded
                         if let items = json["Search"] as? [[String : AnyObject]] {
                             self.items = items
                         } else {
+                            // if json interputation fialed
                             DispatchQueue.main.async {
                                 
                                 // create the alert
@@ -106,30 +99,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                                     
                                 // show the alert
                                 self.present(alert, animated: true, completion: nil)
-                                
                             }
                         }
                     
-                        // process json -> mtitle
+                        // update the table view on the main thread
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
-                    }
-                    catch {
+                    } catch {
                         print("error")
                     }
                 }
             }
         }
         task.resume()
-        
-        
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
