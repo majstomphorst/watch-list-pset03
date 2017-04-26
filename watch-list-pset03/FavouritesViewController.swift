@@ -11,18 +11,7 @@ import UIKit
 class FavouritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var favTableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if let userData = UserDefaults.standard.array(forKey: "1") {
@@ -74,10 +63,6 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
             
             tableView.reloadData()
         }
-        
-        
-        
-        
         print(indexPath.row)
     }
     

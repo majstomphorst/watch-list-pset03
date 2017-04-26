@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var search: UISearchBar!
     
+    
     let url = URL(string: "https://www.omdbapi.com/?s=avatar")
     var items: [[String : AnyObject]] = []
     var send = ""
@@ -91,10 +92,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String : AnyObject]
-                        let items = json["Search"] as! [[String : AnyObject]]
                         
-                        self.items = items
-                        
+                        if let items = json["Search"] as? [[String : AnyObject]] {
+                            self.items = items
+                        } else {
+                            DispatchQueue.main.async {
+                                
+                                // create the alert
+                                let alert = UIAlertController(title: "I couldn't find that movie", message: "Server reports: \(json["Error"] as! String)", preferredStyle: UIAlertControllerStyle.alert)
+                                    
+                                // add an action (button)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                    
+                                // show the alert
+                                self.present(alert, animated: true, completion: nil)
+                                
+                            }
+                        }
+                    
                         // process json -> mtitle
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
@@ -119,29 +134,3 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 }
 
 
-
-//        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-//            if error != nil {
-//                print("getting json faild error")
-//            }
-//            else {
-//                if let data = data
-//                {
-//                    do {
-//                        let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String : AnyObject]
-//                        let items = json["Search"] as! [[String : AnyObject]]
-//
-//                        self.items = items
-//
-//                        // process json -> mtitle
-//                        DispatchQueue.main.async {
-//                            self.tableView.reloadData()
-//                        }
-//                    }
-//                    catch {
-//                        print("error")
-//                    }
-//                }
-//            }
-//        }
-//        task.resume()
