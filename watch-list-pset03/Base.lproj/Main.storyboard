@@ -38,7 +38,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h1I-hR-CrF" id="iGa-n6-LJZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="99.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y9W-NP-ihy">
@@ -148,7 +148,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vye-hp-bT9">
-                                        <rect key="frame" x="129" y="0.0" width="245" height="90.666666666666657"/>
+                                        <rect key="frame" x="129" y="0.0" width="245" height="151.33333333333334"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jr8-PB-Agg" userLabel="Movie Name">
                                                 <rect key="frame" x="0.0" y="0.0" width="245" height="20.333333333333329"/>
@@ -162,8 +162,20 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4d-QA-u4e" userLabel="imdb Rating">
+                                                <rect key="frame" x="0.0" y="60.666666666666657" width="245" height="20.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0IE-9v-813" userLabel="tomato Rating">
+                                                <rect key="frame" x="0.0" y="91" width="245" height="20.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcS-Mq-UDf">
-                                                <rect key="frame" x="0.0" y="60.666666666666657" width="245" height="30"/>
+                                                <rect key="frame" x="0.0" y="121.33333333333334" width="245" height="30"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
                                                     <action selector="storeFavourite:" destination="bzc-Pb-T7I" eventType="touchUpInside" id="jou-oe-9mW"/>
@@ -209,7 +221,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="MovieName" destination="Jr8-PB-Agg" id="AcX-ZA-nKi"/>
+                        <outlet property="movieImdbRating" destination="j4d-QA-u4e" id="BuQ-Xu-60J"/>
                         <outlet property="movieImg" destination="3eq-dv-zua" id="F0P-y1-16x"/>
+                        <outlet property="movieTomatoRating" destination="0IE-9v-813" id="99w-C9-HTV"/>
                         <outlet property="movieYear" destination="ixh-9w-FcA" id="pnu-Lm-aGf"/>
                     </connections>
                 </viewController>
@@ -229,7 +243,7 @@
         <!--Favourite movies-->
         <scene sceneID="WLK-ov-dut">
             <objects>
-                <viewController id="ACG-46-ySS" customClass="FavouritesViewController" customModule="watch_list_pset03" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ACG-46-ySS" customClass="FavouritesViewController" customModule="watch_list_pset03" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vX3-A5-374"/>
                         <viewControllerLayoutGuide type="bottom" id="37z-If-qc4"/>
@@ -238,31 +252,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GLP-O8-E0a">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="124" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GLP-O8-E0a">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favCell" id="1bs-E8-Ik8" customClass="FavouritesTableViewCell" customModule="watch_list_pset03" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favCell" rowHeight="124" id="1bs-E8-Ik8" customClass="FavouritesTableViewCell" customModule="watch_list_pset03" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1bs-E8-Ik8" id="kWL-Zk-LKD">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="123.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D0S-M7-oL6">
-                                                    <rect key="frame" x="8" y="8" width="69" height="84"/>
+                                                    <rect key="frame" x="8" y="8" width="88.333333333333329" height="107.66666666666667"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="D0S-M7-oL6" secondAttribute="height" multiplier="23:28" id="zOS-vg-uJP"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpH-La-15p">
-                                                    <rect key="frame" x="85" y="8" width="78" height="21"/>
+                                                    <rect key="frame" x="104.33333333333334" y="8" width="78.000000000000028" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9e-3K-FND">
-                                                    <rect key="frame" x="85" y="37" width="42" height="21"/>
+                                                    <rect key="frame" x="104.33333333333334" y="37" width="42.000000000000028" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -306,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eyd-qn-EbP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2256.8000000000002" y="123.68815592203899"/>
+            <point key="canvasLocation" x="2256.521739130435" y="123.09782608695653"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iIQ-pZ-KXS">
@@ -328,6 +342,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fjD-JQ-Cy8"/>
+        <segue reference="S0x-4P-S4f"/>
     </inferredMetricsTieBreakers>
 </document>

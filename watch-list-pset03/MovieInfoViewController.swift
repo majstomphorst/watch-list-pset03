@@ -13,6 +13,8 @@ class MovieInfoViewController: UIViewController {
     @IBOutlet weak var MovieName: UILabel!
     @IBOutlet weak var movieImg: UIImageView!
     @IBOutlet weak var movieYear: UILabel!
+    @IBOutlet weak var movieImdbRating: UILabel!
+    @IBOutlet weak var movieTomatoRating: UILabel!
     
     var movieId: String?
     var url = URL(string: "")
@@ -73,6 +75,9 @@ class MovieInfoViewController: UIViewController {
                             // sending data to view
                             self.MovieName.text = json["Title"] as? String
                             self.movieYear.text = json["Year"] as? String
+                            let ratings = self.movieInfo["Ratings"] as? [[String : AnyObject]]
+                            self.movieTomatoRating.text = ratings![1]["Value"] as? String
+                            self.movieImdbRating.text = ratings![2]["Value"] as? String
                         }
                         
                         
