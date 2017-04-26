@@ -36,7 +36,12 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
             // getting the img
             let getPoster = URLSession.shared.dataTask(with: URL(string: dict["Poster"] as! String)!) { (data, response, error) in
                 if error != nil {
-                    print("poster error")
+                    DispatchQueue.main.async {
+                        // display "image not found"
+                        if let filePath = Bundle.main.path(forResource: "noimagefound", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
+                            cell.movieImage.image = image
+                        }
+                    }
                 } else {
                     if let data = data {
                         let image = UIImage(data: data)
@@ -56,15 +61,32 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if var userData = UserDefaults.standard.array(forKey: "1") {
+    
+            var data: [String : AnyObject]
+            data = userData[indexPath.row] as! [String : AnyObject]
+            
+            // Initialize Alert Controller
+            let alertController = UIAlertController(title: "are you sure you want to delete", message: "Movie title: \(data["Title"]! as! String)", preferredStyle: .alert)
         
-            userData.remove(at: indexPath.row)
+            // Initialize Actions
+            let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
             
-            UserDefaults.standard.set(userData, forKey: "1")
+                userData.remove(at: indexPath.row)
+                UserDefaults.standard.set(userData, forKey: "1")
+                
+                tableView.reloadData()
             
-            tableView.reloadData()
+            }
+        
+            let noAction = UIAlertAction(title: "No", style: .default)
+        
+            // Add Actions
+            alertController.addAction(yesAction)
+            alertController.addAction(noAction)
+        
+            // Present Alert Controller
+            self.present(alertController, animated: true, completion: nil)
         }
-        print(indexPath.row)
     }
-
-
+    
 }
