@@ -176,7 +176,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcS-Mq-UDf">
                                                 <rect key="frame" x="0.0" y="121.33333333333334" width="245" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="Save!"/>
                                                 <connections>
                                                     <action selector="storeFavourite:" destination="bzc-Pb-T7I" eventType="touchUpInside" id="jou-oe-9mW"/>
                                                 </connections>

@@ -57,7 +57,6 @@ class MovieInfoViewController: UIViewController {
                                         self.movieImg.image = image
                                     }
                                 }
-                                
     
                             } else {
                                 // if data was retrieved
