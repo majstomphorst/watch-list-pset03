@@ -15,6 +15,7 @@ class MovieInfoViewController: UIViewController {
     @IBOutlet weak var movieYear: UILabel!
     @IBOutlet weak var movieImdbRating: UILabel!
     @IBOutlet weak var movieTomatoRating: UILabel!
+    @IBOutlet weak var moviePlot: UITextView!
     
     
     var movieId: String?
@@ -74,20 +75,16 @@ class MovieInfoViewController: UIViewController {
                             // sending data to view
                             self.MovieName.text = json["Title"] as? String
                             self.movieYear.text = json["Year"] as? String
+                            self.moviePlot.text = json["Plot"] as? String
+                            
                             let ratings = self.movieInfo["Ratings"] as? [[String : AnyObject]]
+                        
+                            self.movieImdbRating.text = "IMDB: \(ratings![0]["Value"]! as! String)"
+                            self.movieTomatoRating.text = "Tomato: \(ratings![1]["Value"]! as! String)"
+
                             
-//                            guard if let imdb = ratings?[0]["Value"] {
-//                                self.movieImdbRating.text = "IMDB: \(ratings![0]["Value"]! as! String)"
-//                            }
-//                            
-//                            guard if let tomato = ratings?[1]["Value"] {
-//                                self.movieTomatoRating.text = "Tomato: \(ratings![1]["Value"]! as! String)"
-//                            }
-                            
-                            
+   
                         }
-                        
-                        
                     }
                     catch {
                         print("error")

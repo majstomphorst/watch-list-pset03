@@ -38,7 +38,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h1I-hR-CrF" id="iGa-n6-LJZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y9W-NP-ihy">
@@ -223,6 +223,7 @@
                         <outlet property="MovieName" destination="Jr8-PB-Agg" id="AcX-ZA-nKi"/>
                         <outlet property="movieImdbRating" destination="j4d-QA-u4e" id="BuQ-Xu-60J"/>
                         <outlet property="movieImg" destination="3eq-dv-zua" id="F0P-y1-16x"/>
+                        <outlet property="moviePlot" destination="oXA-qV-axw" id="fNR-Gn-bUq"/>
                         <outlet property="movieTomatoRating" destination="0IE-9v-813" id="99w-C9-HTV"/>
                         <outlet property="movieYear" destination="ixh-9w-FcA" id="pnu-Lm-aGf"/>
                     </connections>
@@ -260,7 +261,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1bs-E8-Ik8" id="kWL-Zk-LKD">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="123.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="124"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D0S-M7-oL6">
