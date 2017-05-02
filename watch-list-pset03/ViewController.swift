@@ -20,8 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         
         // checking for user data if there is data do nothing if not create it
-        if UserDefaults.standard.array(forKey: "1") != nil {
-        } else {
+        if UserDefaults.standard.array(forKey: "1") == nil {
             // create empty user data
             let userData = [[String : AnyObject]]()
             // storing empty user data
@@ -75,7 +74,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // go to the url and get the data no a second thread (smooth UserExperince)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
-                print("getting json faild error")
+                self.showAlert(title: "Getting json failed", message: "Story, let's tried it again")
+                
             } else {
                 // if data exists
                 if let data = data
@@ -90,15 +90,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         } else {
                             // if json interputation fialed
                             DispatchQueue.main.async {
-                                
-                                // create the alert
-                                let alert = UIAlertController(title: "I couldn't find that movie", message: "Server reports: \(json["Error"] as! String)", preferredStyle: UIAlertControllerStyle.alert)
-                                    
-                                // add an action (button)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                                    
-                                // show the alert
-                                self.present(alert, animated: true, completion: nil)
+                                self.showAlert(title: "I couldn't find that movie", message: "Server reports: \(json["Error"] as! String)")
                             }
                         }
                     
@@ -107,13 +99,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                             self.tableView.reloadData()
                         }
                     } catch {
-                        print("error")
+                        self.showAlert(title: "Something crashed!", message: "let's tried it again")
                     }
                 }
             }
         }
         task.resume()
     }
+  
+    
+    // allert function it show a alert only
+    func showAlert(title: String, message: String) {
+        
+        // create the alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
 
 
