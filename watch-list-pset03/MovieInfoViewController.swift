@@ -79,17 +79,13 @@ class MovieInfoViewController: UIViewController {
                             
                             let ratings = self.movieInfo["Ratings"] as? [[String : AnyObject]]
                             
-                            self.movieImdbRating.text = "IMDB: \(ratings![0]["Value"]! as! String)"
-                            self.movieTomatoRating.text = "Tomato: \(ratings![1]["Value"]! as! String)"
-                            
-//                            do {
-//                                self.movieImdbRating.text = "IMDB: \(ratings![0]["Value"]! as! String)"
-//                                self.movieTomatoRating.text = "Tomato: \(ratings![1]["Value"]! as! String)"
-//                            } catch {
-//                                self.movieImdbRating.text = "unavailable"
-//                                self.movieTomatoRating.text = "unavailable"
-//                            }
-                            
+                            if let ratings = ratings {
+                                if ratings.count == 3 {
+                                    self.movieImdbRating.text = "IMDB: \(ratings[0]["Value"]! as! String)"
+                                    self.movieTomatoRating.text = "Tomato: \(ratings[1]["Value"]! as! String)"
+                                }
+                            }
+                        
                             
                         }
                     } catch {
@@ -116,17 +112,17 @@ class MovieInfoViewController: UIViewController {
         }
     }
 
-    // allert function it show a alert only
-    func showAlert(title: String, message: String) {
-        
-        // create the alert
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        
-        // add an action (button)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
-    }
+//    // allert function it show a alert only
+//    func showAlert(title: String, message: String) {
+//        
+//        // create the alert
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+//        
+//        // add an action (button)
+//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+//        
+//        // show the alert
+//        self.present(alert, animated: true, completion: nil)
+//    }
     
 }

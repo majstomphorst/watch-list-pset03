@@ -108,18 +108,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
   
     
-    // allert function it show a alert only
-    func showAlert(title: String, message: String) {
-        
-        // create the alert
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        
-        // add an action (button)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
-    }
+//    // allert function it show a alert only
+//    func showAlert(title: String, message: String) {
+//        
+//        // create the alert
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+//        
+//        // add an action (button)
+//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+//
+//        // show the alert
+//        self.present(alert, animated: true, completion: nil)
+//    }
     
     
 }
