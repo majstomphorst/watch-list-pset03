@@ -17,7 +17,6 @@ class MovieInfoViewController: UIViewController {
     @IBOutlet weak var movieTomatoRating: UILabel!
     @IBOutlet weak var moviePlot: UITextView!
     
-    
     var movieId: String?
     var url = URL(string: "")
     var movieInfo: [String : AnyObject] = [:]
@@ -72,6 +71,7 @@ class MovieInfoViewController: UIViewController {
                         
                         
                         DispatchQueue.main.async {
+                            
                             // sending data to view
                             self.MovieName.text = json["Title"] as? String
                             self.movieYear.text = json["Year"] as? String
@@ -92,9 +92,9 @@ class MovieInfoViewController: UIViewController {
                             
                             
                         }
-                    }
-                    catch {
-                        print("error")
+                    } catch {
+                        // if error tell user
+                        self.showAlert(title: "Something is wrong", message: "sorry")
                     }
                 }
             }
