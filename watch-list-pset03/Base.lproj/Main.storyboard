@@ -38,7 +38,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h1I-hR-CrF" id="iGa-n6-LJZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y9W-NP-ihy">
@@ -260,7 +260,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1bs-E8-Ik8" id="kWL-Zk-LKD">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="123.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="124"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D0S-M7-oL6">
@@ -270,13 +270,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpH-La-15p">
-                                                    <rect key="frame" x="104.33333333333334" y="8" width="78.000000000000028" height="21"/>
+                                                    <rect key="frame" x="104.33333333333334" y="8" width="301.66666666666663" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9e-3K-FND">
-                                                    <rect key="frame" x="104.33333333333334" y="37" width="42.000000000000028" height="21"/>
+                                                    <rect key="frame" x="104.33333333333334" y="37" width="301.66666666666663" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -284,11 +284,13 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="OpH-La-15p" firstAttribute="top" secondItem="kWL-Zk-LKD" secondAttribute="topMargin" id="3ON-zG-lWR"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="p9e-3K-FND" secondAttribute="trailing" id="8PV-AS-ByV"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="D0S-M7-oL6" secondAttribute="bottom" id="Bhs-hc-NTE"/>
                                                 <constraint firstItem="D0S-M7-oL6" firstAttribute="top" secondItem="kWL-Zk-LKD" secondAttribute="topMargin" id="Rm0-xM-ByM"/>
                                                 <constraint firstItem="OpH-La-15p" firstAttribute="leading" secondItem="D0S-M7-oL6" secondAttribute="trailing" constant="8" id="cXH-l5-t9a"/>
                                                 <constraint firstItem="p9e-3K-FND" firstAttribute="top" secondItem="OpH-La-15p" secondAttribute="bottom" constant="8" id="iH7-g2-COr"/>
                                                 <constraint firstItem="D0S-M7-oL6" firstAttribute="leading" secondItem="kWL-Zk-LKD" secondAttribute="leadingMargin" id="k3K-et-A7k"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OpH-La-15p" secondAttribute="trailing" id="lvB-HF-OY8"/>
                                                 <constraint firstItem="p9e-3K-FND" firstAttribute="leading" secondItem="D0S-M7-oL6" secondAttribute="trailing" constant="8" id="pDV-NG-xo5"/>
                                             </constraints>
                                         </tableViewCellContentView>

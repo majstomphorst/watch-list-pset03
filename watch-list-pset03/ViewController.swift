@@ -68,14 +68,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // sanitising user input (serch term)
         search = search?.addingPercentEncoding(withAllowedCharacters: .alphanumerics)
         
-        // creating the url where the information is tobe extracted
+        // creating the url where the information is to be extracted
         let url = URL(string: "https://www.omdbapi.com/?s=\(search!)")
         
-        // go to the url and get the data no a second thread (smooth UserExperince)
+        // go to the url and get the data on a second thread (smooth UserExperince)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
                 self.showAlert(title: "Getting json failed", message: "Story, let's tried it again")
-                
             } else {
                 // if data exists
                 if let data = data

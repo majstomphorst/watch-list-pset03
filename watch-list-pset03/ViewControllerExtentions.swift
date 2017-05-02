@@ -24,6 +24,7 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    
     func askUserAlert (title: String, message: String, completion: @escaping ((Bool) -> Void)) {
         
         // Initialize Alert Controller
