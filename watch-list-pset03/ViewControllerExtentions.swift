@@ -24,4 +24,30 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func askUserAlert (title: String, message: String, completion: @escaping ((Bool) -> Void)) {
+        
+        // Initialize Alert Controller
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // Initialize Actions
+        let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+            completion(true)
+        }
+        
+        // if no is selected to nothing
+        let noAction = UIAlertAction(title: "No", style: .default) { (action) in
+            completion(false)
+        }
+        
+        // Add Actions
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        
+        // Present Alert Controller
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+        
+    
 }

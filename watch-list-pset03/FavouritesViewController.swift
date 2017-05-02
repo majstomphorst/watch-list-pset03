@@ -78,29 +78,16 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
             // get cast data
             data = userData[indexPath.row] as! [String : AnyObject]
             
-            // Initialize Alert Controller
-            let alertController = UIAlertController(title: "are you sure you want to delete", message: "Movie title: \(data["Title"]! as! String)", preferredStyle: .alert)
-        
-            // Initialize Actions
-            // if yes is selected delete the item and reload tabeview
-            let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
-            
-                userData.remove(at: indexPath.row)
-                UserDefaults.standard.set(userData, forKey: "1")
-                
-                tableView.reloadData()
-            
+            askUserAlert(title: "are you sure you want to delete", message: "Movie title: \(data["Title"]! as! String)") { (result) in
+                if result {
+                    
+                    userData.remove(at: indexPath.row)
+                    UserDefaults.standard.set(userData, forKey: "1")
+                    
+                    tableView.reloadData()
+                }
             }
             
-            // if no is selected to nothing
-            let noAction = UIAlertAction(title: "No", style: .default)
-        
-            // Add Actions
-            alertController.addAction(yesAction)
-            alertController.addAction(noAction)
-        
-            // Present Alert Controller
-            self.present(alertController, animated: true, completion: nil)
         }
     }
     

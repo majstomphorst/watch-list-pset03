@@ -55,7 +55,6 @@ class MovieInfoViewController: UIViewController {
                                     if let filePath = Bundle.main.path(forResource: "noimagefound", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
                                         self.movieImg.image = image
                                     }
-                                    
                                 }
     
                             } else {
@@ -85,8 +84,7 @@ class MovieInfoViewController: UIViewController {
                                     self.movieTomatoRating.text = "Tomato: \(ratings[1]["Value"]! as! String)"
                                 }
                             }
-                        
-                            
+                         
                         }
                     } catch {
                         // if error tell user
@@ -96,7 +94,6 @@ class MovieInfoViewController: UIViewController {
             }
         }
         task.resume()
-        
         
     }
 
@@ -111,18 +108,5 @@ class MovieInfoViewController: UIViewController {
             UserDefaults.standard.set(userData, forKey: "1")   
         }
     }
-
-//    // allert function it show a alert only
-//    func showAlert(title: String, message: String) {
-//        
-//        // create the alert
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-//        
-//        // add an action (button)
-//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-//        
-//        // show the alert
-//        self.present(alert, animated: true, completion: nil)
-//    }
     
 }

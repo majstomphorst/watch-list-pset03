@@ -68,10 +68,10 @@
 			children = (
 				28B9C3521EB0F0A8003BC8A5 /* noimagefound.jpg */,
 				28083F1D1EB0BD3900D23D3E /* Assets.xcassets */,
+				282F11891EB8904700DB053F /* ViewControllerExtentions.swift */,
 				28B923031EA62F7900CC0320 /* AppDelegate.swift */,
 				28E8FC9C1EA8A60A0062D46C /* MovieCell.swift */,
 				28B923051EA62F7900CC0320 /* ViewController.swift */,
-				282F11891EB8904700DB053F /* ViewControllerExtentions.swift */,
 				28D4A9711EAE24B800BAD230 /* FavouritesTableViewCell.swift */,
 				289AB2F21EAA2B0000EA569E /* MovieInfoViewController.swift */,
 				28D4A96F1EAE160800BAD230 /* FavouritesViewController.swift */,
